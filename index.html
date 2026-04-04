@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dendera Farm</title>
+  <meta
+    name="description"
+    content="Dendera Farm, a private South Georgia landholding shaped by sporting tradition, agricultural leasing, timber management, and long-term stewardship."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --forest: #183126;
+      --forest-2: #244235;
+      --forest-3: #304d40;
+      --tan: #c7aa73;
+      --tan-2: #ab8a52;
+      --cream: #ede7de;
+      --cream-2: #e5dccf;
+      --ink: #1c201c;
+      --muted: #5f655f;
+      --line: rgba(24, 49, 38, 0.12);
+      --shadow: 0 18px 44px rgba(20, 35, 28, 0.12);
+      --max: 1180px;
+      --radius: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.65;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      margin: 0 0 16px;
+      line-height: 1.02;
+      letter-spacing: 0.01em;
+    }
+
+    h1 {
+      font-size: clamp(3.3rem, 7vw, 6.4rem);
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      color: var(--forest);
+    }
+
+    h3 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--forest);
+    }
+
+    p {
+      margin: 0 0 18px;
+    }
+
+    .site {
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(237, 231, 222, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.7rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      color: var(--forest);
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--forest-2);
+      font-size: 0.94rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--tan-2);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 96vh;
+      display: flex;
+      align-items: center;
+      color: #f3ece2;
+      background:
+        linear-gradient(rgba(15, 26, 21, 0.50), rgba(15, 26, 21, 0.58)),
+        url("south-georgia-cotton-road.jpg") center center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 140px;
+      background: linear-gradient(to bottom, rgba(237, 231, 222, 0), var(--cream));
+      z-index: 1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+      padding: 92px 0 120px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: #d9c08f;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-copy p {
+      max-width: 700px;
+      font-size: 1.08rem;
+      color: rgba(243, 236, 226, 0.92);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.96rem;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--tan);
+      color: #182118;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.14);
+    }
+
+    .btn-primary:hover {
+      background: #d0b17b;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      color: #f3ece2;
+      border-color: rgba(243, 236, 226, 0.26);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .hero-emblem {
+      background: rgba(243, 236, 226, 0.08);
+      border: 1px solid rgba(243, 236, 226, 0.14);
+      border-radius: 30px;
+      padding: 34px;
+      backdrop-filter: blur(7px);
+      box-shadow: 0 22px 50px rgba(0,0,0,0.16);
+    }
+
+    .hero-emblem img {
+      width: min(340px, 100%);
+      margin: 0 auto 18px;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.16));
+      background: rgba(255,255,255,0.92);
+      padding: 18px;
+      border-radius: 10px;
+    }
+
+    .hero-emblem p {
+      color: rgba(243, 236, 226, 0.9);
+      font-size: 0.98rem;
+      margin: 0;
+      text-align: center;
+    }
+
+    .section {
+      position: relative;
+      padding: 90px 0;
+    }
+
+    .section-light {
+      background: var(--cream);
+    }
+
+    .section-light::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("Dendera Logo.png");
+      background-repeat: no-repeat;
+      background-position: right -60px center;
+      background-size: 440px;
+      opacity: 0.055;
+      pointer-events: none;
+      z-index: 1;
+      mix-blend-mode: multiply;
+    }
+
+    .section-light.center-mark::before {
+      background-position: center center;
+      background-size: 520px;
+      opacity: 0.05;
+    }
+
+    .section-deep {
+      color: #ecdfcf;
+      background:
+        linear-gradient(rgba(24, 49, 38, 0.93), rgba(24, 49, 38, 0.95)),
+        url("south-georgia-pines.jpg") center center / cover no-repeat;
+    }
+
+    .section-deep h2,
+    .section-deep h3 {
+      color: #f2e8db;
+    }
+
+    .section-header {
+      max-width: 760px;
+      margin-bottom: 34px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .kicker {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--tan-2);
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .section-deep .kicker {
+      color: #d8bf8a;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.07rem;
+    }
+
+    .section-deep .lead,
+    .section-deep p {
+      color: rgba(236, 223, 207, 0.88);
+    }
+
+    .philosophy-grid,
+    .legacy-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 30px;
+      align-items: stretch;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card,
+    .feature,
+    .contact-card {
+      background: rgba(255,255,255,0.42);
+      border: 1px solid rgba(24, 49, 38, 0.08);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .section-deep .card,
+    .section-deep .feature,
+    .section-deep .contact-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(243, 236, 226, 0.12);
+      box-shadow: none;
+    }
+
+    .card-body,
+    .contact-body {
+      padding: 28px;
+    }
+
+    .list {
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--forest-2);
+    }
+
+    .section-deep .list li {
+      color: rgba(236, 223, 207, 0.9);
+    }
+
+    .list li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--tan-2);
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .feature img {
+      width: 100%;
+      height: 245px;
+      object-fit: cover;
+    }
+
+    .feature .card-body p,
+    .card p,
+    .contact-card p {
+      color: var(--muted);
+    }
+
+    .feature .card-body h3 {
+      margin-bottom: 10px;
+    }
+
+    .section-deep .feature .card-body p,
+    .section-deep .card p {
+      color: rgba(236, 223, 207, 0.82);
+    }
+
+    .quote-band {
+      text-align: center;
+      padding: 86px 0;
+      background:
+        linear-gradient(rgba(18, 34, 27, 0.68), rgba(18, 34, 27, 0.72)),
+        url("south-georgia-duck.jpg") center center / cover no-repeat;
+      color: #f2e7d8;
+      position: relative;
+    }
+
+    .quote-band::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("Dendera Logo.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 360px;
+      opacity: 0.05;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .quote-band blockquote {
+      position: relative;
+      z-index: 2;
+      margin: 0 auto;
+      max-width: 850px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1.12;
+    }
+
+    .quote-band p {
+      position: relative;
+      z-index: 2;
+      margin-top: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #d7c08e;
+      font-size: 0.84rem;
+    }
+
+    .center-copy {
+      max-width: 840px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-card.logo-panel {
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+      background:
+        linear-gradient(rgba(255,255,255,0.26), rgba(255,255,255,0.26)),
+        rgba(255,255,255,0.32);
+    }
+
+    .contact-card.logo-panel img {
+      width: min(360px, 70%);
+      opacity: 0.92;
+    }
+
+    footer {
+      background: var(--forest);
+      color: #eadfcf;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-inner {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.55rem;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-brand img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .philosophy-grid,
+      .legacy-grid,
+      .contact-grid,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid {
+        padding: 72px 0 110px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero-grid {
+        gap: 28px;
+      }
+
+      .feature img {
+        height: 220px;
+      }
+
+      .section-light::before,
+      .section-light.center-mark::before {
+        background-size: 260px;
+        background-position: center top 24px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header class="topbar">
+      <div class="container">
+        <nav class="nav">
+          <a class="brand" href="#top">
+            <img src="Dendera Logo.png" alt="Dendera Farm logo" />
+            <div class="brand-copy">
+              <strong>Dendera Farm</strong>
+              <span>South Georgia</span>
+            </div>
+          </a>
+
+          <div class="nav-links">
+            <a href="#philosophy">Philosophy</a>
+            <a href="#sporting">Sporting</a>
+            <a href="#leasing">Leasing</a>
+            <a href="#timber">Timber</a>
+            <a href="#legacy">Legacy</a>
+            <a href="#contact">Inquiry</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <span class="eyebrow">Private South Georgia Landholding</span>
+              <h1>Rooted in tradition. Managed to endure.</h1>
+              <p>
+                Dendera Farm is a private Southern property shaped by stewardship, sporting tradition, agricultural leasing,
+                and timber management. It is not novelty land or recreational fluff. It is working ground, held with patience,
+                judgment, and a long memory.
+              </p>
+              <p>
+                The spirit here is South Georgia: dark timber, open fields, old roads, duck mornings, bird dogs, and land that
+                carries its own quiet weight.
+              </p>
+
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#contact">Make an Inquiry</a>
+                <a class="btn btn-secondary" href="#philosophy">Our Philosophy</a>
+              </div>
+            </div>
+
+            <aside class="hero-emblem">
+              <img src="Dendera Logo.png" alt="Dendera Farm emblem" />
+              <p>
+                A privately held land asset grounded in stewardship, disciplined management, and the kind of Southern permanence that does not need to announce itself.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-light center-mark" id="philosophy">
+        <div class="container">
+          <div class="section-header">
+            <span class="kicker">Dendera Farm</span>
+            <h2>A place with weight, not noise.</h2>
+            <p class="lead">
+              Dendera Farm is managed with a simple bias: protect the character of the land, keep it productive, and think in decades rather than quarters.
+              The strongest land assets are rarely overworked. They are understood, maintained, and allowed to compound.
+            </p>
+          </div>
+
+          <div class="philosophy-grid">
+            <div class="card">
+              <div class="card-body">
+                <h3>Our Philosophy</h3>
+                <ul class="list">
+                  <li>Stewardship first, because good land must outlast its current owner.</li>
+                  <li>Productivity second, because working ground should remain useful and disciplined.</li>
+                  <li>Short-term noise last, because durable value is built slowly.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <h3>Land, legacy, and operational clarity.</h3>
+                <p>
+                  This is not passive acreage. It is a serious Southern holding shaped by field realities, access, stand conditions,
+                  agricultural use, and long-horizon judgment.
+                </p>
+                <ul class="list">
+                  <li>Private timberland identity</li>
+                  <li>Measured land use</li>
+                  <li>Business-minded stewardship</li>
+                  <li>Grounded Southern character</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="quote-band">
+        <div class="container">
+          <blockquote>
+            “The strongest land assets are not managed for the next quarter. They are managed for the next generation.”
+          </blockquote>
+          <p>Dendera Farm</p>
+        </div>
+      </section>
+
+      <section class="section section-deep" id="sporting">
+        <div class="container">
+          <div class="section-header">
+            <span class="kicker">Sporting Tradition</span>
+            <h2>Classic Southern field life.</h2>
+            <p class="lead">
+              The sporting side of Dendera Farm should feel closer to old field paintings than modern outdoor marketing.
+              Deer season, duck mornings, bird dogs, and long-established Southern sporting culture belong to the identity of the place.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature">
+              <img src="south-georgia-dog.jpg" alt="Southern sporting dog in field at sunrise" />
+              <div class="card-body">
+                <h3>Dog Work and Field Tradition</h3>
+                <p>
+                  The mood is deliberate and old-world: dogs in the field, brushed canvas, worn leather, and the kind of restraint
+                  that feels inherited rather than designed.
+                </p>
+              </div>
+            </article>
+
+            <article class="feature">
+              <img src="south-georgia-duck.jpg" alt="Duck hunting scene in South Georgia marsh at sunrise" />
+              <div class="card-body">
+                <h3>Duck and Deer</h3>
+                <p>
+                  Hunting is part of the practical and cultural life of the property, not an afterthought. It reflects habitat,
+                  timing, restraint, and respect for the land itself.
+                </p>
+              </div>
+            </article>
+
+            <article class="feature">
+              <img src="south-georgia-pines.jpg" alt="Pine road in South Georgia with warm early light" />
+              <div class="card-body">
+                <h3>South Georgia Character</h3>
+                <p>
+                  This should feel like South Georgia charm, not the Pacific Northwest. Pine, field edge, water, long shadows,
+                  and a slower, older visual language matter here.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-light" id="leasing">
+        <div class="container">
+          <div class="section-header">
+            <span class="kicker">Farm Leasing</span>
+            <h2>Working ground that stays productive.</h2>
+            <p class="lead">
+              Portions of the property are leased for agriculture, reinforcing the discipline of working land rather than idle acreage.
+              The result is a property identity tied not only to beauty, but to usefulness.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature">
+              <img src="peanuts.jpg" alt="Close-up of peanuts freshly pulled from South Georgia soil" />
+              <div class="card-body">
+                <h3>Peanuts</h3>
+                <p>
+                  A South Georgia staple, and part of the broader agricultural rhythm that gives the property real regional authenticity.
+                </p>
+              </div>
+            </article>
+
+            <article class="feature">
+              <img src="soy.jpg" alt="Close-up of soybean pods in warm South Georgia light" />
+              <div class="card-body">
+                <h3>Soy</h3>
+                <p>
+                  Leased acreage remains disciplined and productive, supporting a working-land mindset instead of ornamental ownership.
+                </p>
+              </div>
+            </article>
+
+            <article class="feature">
+              <img src="cotton.jpg" alt="Close-up of cotton bolls in a South Georgia field at golden hour" />
+              <div class="card-body">
+                <h3>Cotton</h3>
+                <p>
+                  Cotton reinforces the classic Southern agricultural identity of the property and its rootedness in regional land use.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-deep" id="timber">
+        <div class="container">
+          <div class="section-header">
+            <span class="kicker">Timber Sales and Management</span>
+            <h2>Long-horizon value, handled with restraint.</h2>
+            <p class="lead">
+              Timber sits at the center of Dendera Farm’s identity as a land asset. It is approached as a long-duration holding,
+              requiring timing, road access, stand awareness, and decisions that protect future value rather than chase immediate extraction.
+            </p>
+          </div>
+
+          <div class="philosophy-grid">
+            <div class="card">
+              <div class="card-body">
+                <h3>Management Priorities</h3>
+                <ul class="list">
+                  <li>Stand quality over reactive cuts</li>
+                  <li>Roads and access treated as infrastructure</li>
+                  <li>Land readiness and field knowledge</li>
+                  <li>Resource protection alongside productive use</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <h3>Measured execution.</h3>
+                <p>
+                  Good land management is rarely loud. It is the steady result of maintenance, practical judgment, and consistency across years.
+                  The aim is durability, not theater.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-light center-mark" id="legacy">
+        <div class="container">
+          <div class="legacy-grid">
+            <div class="center-copy">
+              <span class="kicker">Legacy</span>
+              <h2>A Southern holding built to endure.</h2>
+              <p class="lead">
+                Dendera Farm exists at the intersection of heritage and management. It honors permanence while treating stewardship as an active responsibility.
+                The result is a property identity that feels grounded, elegant, and quietly durable.
+              </p>
+              <p class="lead">
+                This is not land presented for spectacle. It is land held with seriousness.
+              </p>
+            </div>
+
+            <div class="contact-card logo-panel">
+              <img src="Dendera Logo.png" alt="Dendera Farm logo panel" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-light" id="contact">
+        <div class="container">
+          <div class="contact-grid">
+            <div class="contact-card">
+              <div class="contact-body">
+                <span class="kicker">Inquiries</span>
+                <h2>For conversations related to the property, reach out directly.</h2>
+                <p>
+                  This website is intended to present Dendera Farm with clarity, elegance, and seriousness. For inquiries related to the property,
+                  land management, or partnerships, use the contact details below.
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-body">
+                <span class="kicker">Contact</span>
+                <h3>info@denderafarm.com</h3>
+                <p>Replace this email with your actual address before deploying.</p>
+                <p style="margin-top: 18px;"><strong>Dendera Farm</strong><br>South Georgia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <img src="Dendera Logo.png" alt="Dendera Farm logo" />
+            <span>Dendera Farm</span>
+          </div>
+          <div>South Georgia stewardship, sporting tradition, farm leasing, and timber management.</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
